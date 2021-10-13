@@ -1,0 +1,6 @@
+{
+  "entryPoints": [
+    "src/htmldiff.ts"
+  ],
+  "out": "docs"
+}
