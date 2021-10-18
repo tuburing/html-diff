@@ -14,7 +14,7 @@
   "author": "tuburing",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/tuburing/htmldiff"
   },
   "license": "MIT",
   "engines": {
@@ -31,10 +31,12 @@
     "deploy-docs": "ts-node tools/gh-pages-publish",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "commit": "git-cz",
-    "semantic-release": "semantic-release",
+    "semantic-release": "npx semantic-release",
     "semantic-release-prepare": "ts-node tools/semantic-release-prepare",
     "precommit": "lint-staged",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "prepush": "npm run test:prod && npm run build",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [

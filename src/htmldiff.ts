@@ -281,7 +281,7 @@ const wrap = function (tag: string, content: string) {
   return rendering;
 };
 
-const opMap: any = {
+const opMap = {
   equal: function (op: { start_in_before: any; end_in_before: string | number; }, before_words: any[], after_words: any) {
     return before_words.slice(op.start_in_before, +op.end_in_before + 1 || 9e9).join("");
   },
@@ -298,7 +298,7 @@ const opMap: any = {
   }
 };
 
-const renderOperations = function (before_words: string[], after_words: string[], operations: any) {
+const renderOperations = function (before_words: string[], after_words: string[], operations: IOperations[]) {
   let rendering = "";
   for (let i = 0, len = operations.length; i < len; i++) {
     const op = operations[i];
@@ -318,3 +318,7 @@ const diff = function (before: string, after: string) {
 };
 
 export default diff;
+
+interface IOperations {
+  action: 'equal' | 'insert' | 'delete' | 'replace'
+}
